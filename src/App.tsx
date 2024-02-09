@@ -22,7 +22,7 @@ function App() {
       <h1>Yoga Poses ({poses.length})</h1>
       <Grid container spacing={2}>
         {poses.map((pose,i) =>
-          <Grid item xs={4} key={i}>
+          <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={i}>
             <PoseCard pose={pose}/>
           </Grid>
         )}
