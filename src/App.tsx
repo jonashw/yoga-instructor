@@ -1,6 +1,6 @@
 import { useState,useEffect } from 'react';
 import './App.css';
-import { Grid, IconButtonProps, styled } from '@mui/material';
+import { Grid } from '@mui/material';
 import { Pose } from './Pose';
 import { PoseCard } from './PoseCard';
 
