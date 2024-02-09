@@ -1,0 +1,44 @@
+[
+  {
+    "Id": 1,
+    "Name": "Upward Salute",
+    "Instructions": "Start from a standing position with your arms hanging at your sides. Slowly sweep your arms out and up toward the ceiling, bringing your hands together overhead. Reach up and slightly back while keeping your neck and shoulders relaxed and lengthening your tailbone toward the ground.",
+    "Benefits": "Shoulders, Upper Back, Abdomen, Chest, Spine, Obliques, Lats"
+  },
+  {
+    "Id": 2,
+    "Name": "Toe Touch",
+    "Instructions": "Start from a standing position with your feet hip - width apart and toes facing forward. Keeping a slight bend in the knees, gently fold forward at the hips and let your fingers hang down toward your toes.",
+    "Benefits": "Lower Back, Hamstrings, Calves, Glutes"
+  },
+  {
+    "Id": 3,
+    "Name": "Lunge",
+    "Instructions": "Start from a kneeling position with your hands at your sides. Step your left leg forward and position your left knee directly over your left ankle. Raise your arms above your head and shift your hips forward to deepen the lunge. If necessary, place a towel or blanket under your back knee for additional support.",
+    "Benefits": "Hips, Quadriceps, Lower Back, Abdomen, Psoas"
+  },
+  {
+    "Id": 4,
+    "Name": "Upward Dog",
+    "Instructions": "Start lying face - down on the floor with your legs straight behind you and your palms on the floor beside you, next to your ribs. Press down on your hands to straighten your arms and lift your chest, torso, and hips off the floor. Relax your shoulders and engage your legs and feet to keep your thighs lifted slightly off the floor.",
+    "Benefits": "Chest, Abdomen, Spine, Wrists, Psoas"
+  },
+  {
+    "Id": 5,
+    "Name": "Child\u0027s Pose",
+    "Instructions": "Start from a kneeling position with your toes together and your knees hip - width apart. Lower your torso, allowing your stomach to rest between your knees and placing your forehead on the floor. Extend your arms forward with your palms against the floor and relax your shoulders toward the ground.",
+    "Benefits": "Lower Back, Shoulders, Hips, Ankles, Shins, Feet"
+  },
+  {
+    "Id": 6,
+    "Name": "Downward Dog",
+    "Instructions": "Start on your hands and knees with your wrists under your shoulders and your knees under your hips. Curl your toes under and push back through your hands to lift your hips toward the ceiling and straighten your legs. Lengthen your spine, draw your shoulder blades in, and let your heels sink toward the floor.",
+    "Benefits": "Hamstrings, Shoulders, Calves, Lower Back, Glutes"
+  },
+  {
+    "Id": 7,
+    "Name": "Wide Leg Bend",
+    "Instructions": "From a standing position, keep your toes pointed forward and widen your stance while maintaining stability. Keeping a slight bend in the knees, gently fold forward at the hips and touch the floor with your fingers or palms. If possible, continue to reach further back to deepen the stretch.",
+    "Benefits": "Lower Back, Hamstrings, Calves, Groin, Hips"
+  }
+]
