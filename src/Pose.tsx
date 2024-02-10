@@ -4,3 +4,14 @@ export type Pose = {
   Instructions: string;
   Benefits: string;
 };
+
+export type Routine = {
+  Id: number,
+  Name: string,
+  RoutinePoses: RoutinePose[]
+};
+
+export type RoutinePose = {
+  Pose: Pose,
+  DurationInSeconds: number 
+};

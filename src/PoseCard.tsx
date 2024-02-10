@@ -6,22 +6,8 @@ import { red } from '@mui/material/colors';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Pose } from './Pose';
 import RecordVoiceOverIcon from '@mui/icons-material/RecordVoiceOver';
-
-const announce = (msg: string) => {
-  const voice = "Joanna";
-  const urlSafeMsg = window.encodeURIComponent(msg);
-  let url = `https://us-west1-jonashw-dev-personal-website.cloudfunctions.net/jonashw-dev-speech-synthesis-proxy?voice=${voice}&msg=${urlSafeMsg}`;
-  console.log({urlSafeMsg,url});
-  fetch(url,{redirect: 'follow'})
-  .then(r => r.blob())
-  .then(b => {
-    const audio = new Audio();
-    console.log({audio});
-    audio.controls = true;
-    audio.autoplay = true;
-    audio.src = window.URL.createObjectURL(b);
-  })
-};
+import Announcer from "./Announcer";
+import { PoseImageUrl } from './PoseImageUrl';
 
 interface ExpandMoreProps extends IconButtonProps {
   expand: boolean;
@@ -37,8 +23,6 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
-
-
 
 export function PoseCard({ pose }: { pose: Pose; }) {
   const [expanded, setExpanded] = useState(false);
@@ -61,7 +45,7 @@ export function PoseCard({ pose }: { pose: Pose; }) {
         title={pose.Name} />
       <CardMedia
         component="img"
-        image={`/pose_illustrations/pose${pose.Id.toString().padStart(2, "0")}.jpg`}
+        image={PoseImageUrl(pose.Id)}
         alt={"Pose illustration: " + pose.Name} />
       <CardActions disableSpacing>
         {/*
@@ -71,7 +55,7 @@ export function PoseCard({ pose }: { pose: Pose; }) {
         */}
         <IconButton aria-label="Say name" onClick={e => {
           e.stopPropagation();
-          announce(pose.Name);
+          Announcer.announce(pose.Name);
         }}>
           <RecordVoiceOverIcon/>
         </IconButton>
