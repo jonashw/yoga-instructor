@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { PoseDataContext } from "./PoseDataContext";
 import { Container, Grid } from "@mui/material";
 import RoutineCard from "./RoutineCard";
+import { PageHeading } from "./PageHeading";
 
 export default function RoutineListRoute() {
     const poseData = useContext(PoseDataContext);
@@ -9,7 +10,9 @@ export default function RoutineListRoute() {
 
     return (
         <Container>
-            <h1>Yoga Routines ({routines.length})</h1>
+            <PageHeading>
+                Yoga Routines ({routines.length})
+            </PageHeading>
 
             <Grid container spacing={2}>
                 {routines.map((routine, i) => 

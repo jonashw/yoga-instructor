@@ -13,6 +13,7 @@ import PoseListRoute from "./PoseListRoute.tsx";
 import RoutineListRoute from './RoutineListRoute.tsx';
 import YogaAppBar from './YogaAppBar.tsx';
 import { Box } from '@mui/material';
+import "./main.scss";
 
 const router = createBrowserRouter([
   {

@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { PoseDataContext } from "./PoseDataContext";
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Typography } from "@mui/material";
 import { PoseCard } from "./PoseCard";
 
 export default function PoseListRoute() {
@@ -9,7 +9,9 @@ export default function PoseListRoute() {
 
     return (
         <Container>
-            <h1>Yoga Poses ({poses.length})</h1>
+            <Typography variant="h5">
+                Yoga Poses ({poses.length})
+            </Typography>
 
             <Grid container spacing={2}>
                 {poses.map((pose, i) => <Grid item xs={12} sm={6} md={4} lg={3} xl={2} key={i}>
