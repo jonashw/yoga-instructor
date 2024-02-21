@@ -19,7 +19,7 @@ export default function RoutineCard({ routine }: { routine: Routine; }) {
                 <CardContent>
                     <Grid container spacing={1}>
                         {routine.RoutinePoses.map(rp => 
-                            <Grid item xs={3}>
+                            <Grid item xs={3} key={rp.Pose.Name}>
                                 <Avatar aria-label={rp.Pose.Name} src={PoseImageUrl(rp.Pose.Id)}/>
                             </Grid>
                         )}

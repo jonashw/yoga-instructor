@@ -3,9 +3,15 @@ export const UserInteractedContext = createContext<boolean>(false);
 
 export const UserInteractedProvider  = ({children}: {children: React.ReactElement}) => {
     const [value, setValue] = useState<boolean>(false);
-    const eventNames = ["click", "mousemove", "mouseover", "mousemove", "touchmove", "focus"];
+    const eventNames = [
+        "click"
+        //,"mousemove"
+        //,"mouseover"
+        //,"mousemove"
+        //,"touchmove"
+        ,"focus"
+    ];
     const onUserEvent = () => {
-        console.log('user has interacted');
         if(value){
             return;
         }

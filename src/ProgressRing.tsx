@@ -1,5 +1,4 @@
 import { green, grey } from '@mui/material/colors';
-import { StyleHTMLAttributes } from 'react';
 
 export const ProgressRing = ({
     progress, sideLength, strokeWidth, style
@@ -7,7 +6,7 @@ export const ProgressRing = ({
     progress: number;
     sideLength: number;
     strokeWidth?: number;
-    style?:StyleHTMLAttributes<HTMLElement>
+    style?:React.CSSProperties
 }) => {
     const sw = strokeWidth ?? 4;
     const r = (sideLength / 2) - sw/2;

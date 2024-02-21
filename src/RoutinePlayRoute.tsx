@@ -11,7 +11,7 @@ import { UserInteractedContext } from "./UserInteractedContext";
 
 const RoutinePlayRoute = () => {
     const poseData = useContext(PoseDataContext);
-    const userInteracted = useContext(UserInteractedContext);
+    const userHasInteracted = useContext(UserInteractedContext);
     const { routineId } = useParams();
     const [currentPose, setCurrentPose] = useState<RoutinePose | undefined>();
     const [progress, setProgress] = useState(0);
@@ -41,10 +41,11 @@ const RoutinePlayRoute = () => {
         if (!routine) {
             return;
         }
-        if(userInteracted){
+        if(userHasInteracted){
+            console.log('starting')
             play(routine.RoutinePoses);
         }
-    }, [routine]);
+    }, [routine,userHasInteracted]);
 
     if (!routine) {
         return <div>Loading...</div>;
@@ -56,7 +57,6 @@ const RoutinePlayRoute = () => {
                 ?
                     <>
                         <Button color="primary" variant="outlined" onClick={() => {
-                            play(routine.RoutinePoses);
                         }}>Start Routine</Button>
                     </>
                 : 

@@ -28,8 +28,8 @@ const RoutineRoute = () => {
                     <PlayArrowIcon />
                 </Fab>
                 <Stack direction="column" spacing={2}>
-                    {poses.map(p => <div>
-                        <Stack direction="row" spacing={2} justifyContent="space-between" key={p.Pose.Id}>
+                    {poses.map(p => <div key={p.Pose.Id}>
+                        <Stack direction="row" spacing={2} justifyContent="space-between">
                             <Stack direction="row" spacing={2} alignItems="center">
                                 <img src={PoseImageUrl(p.Pose.Id)} style={{maxWidth:'64px'}}/>
                                 <Typography>{p.Pose.Name}</Typography>
