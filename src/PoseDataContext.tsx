@@ -10,7 +10,7 @@ type PoseData = {
 
 export const PoseDataContext = createContext<ContextValue<PoseData>>({
     loading:true,
-    value:{ poses: [], routines: []}
+    value:{ poses: [], routines: [] }
 });
 
 export const PoseDataProvider  = ({children}: {children: React.ReactElement}) => {

@@ -3,47 +3,22 @@ import ReactDOM from 'react-dom/client'
 
 import {
   createBrowserRouter,
-  Outlet,
   RouterProvider,
 } from "react-router-dom";
 
 import { PoseDataProvider } from './PoseDataContext.tsx';
-import RoutineRoute from './RoutineRoute.tsx';
-import PoseListRoute from "./PoseListRoute.tsx";
-import RoutineListRoute from './RoutineListRoute.tsx';
-import YogaAppBar from './YogaAppBar.tsx';
-import { Box } from '@mui/material';
 import "./main.scss";
+import { routes } from './routes.tsx';
+import {  UserInteractedProvider } from './UserInteractedContext.tsx';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: 
-      <Box>
-        <YogaAppBar />
-        <Outlet />
-      </Box>,
-    children: [
-      {
-        index: true,
-        element: <RoutineListRoute/>
-      },
-      {
-        path: "/poses",
-        element: <PoseListRoute/>,
-      },
-      {
-        path: "/routine/:routineId",
-        element: <RoutineRoute/>,
-      },
-    ]
-  }
-]);
+const router = createBrowserRouter(routes);
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
+    <UserInteractedProvider>
       <PoseDataProvider>
         <RouterProvider router={router} />
       </PoseDataProvider>
+    </UserInteractedProvider>
   </React.StrictMode>
 );
