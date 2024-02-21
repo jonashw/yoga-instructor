@@ -17,13 +17,14 @@ import {
 } from 'react-router-dom';
 
 const appName = "YOGA";
+const navItems = [
+  { label: 'Routines', to: '/' },
+  { label: 'Poses', to: '/poses' },
+  { label: 'Components', to: '/components' }
+];
 
 //const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
-const navItems = [
-  { label: 'Routines', to: '/' },
-  { label: 'Poses', to: '/poses' }
-];
 //Reference: https://mui.com/material-ui/integrations/routing/
 
 function ResponsiveAppBar() {

@@ -6,14 +6,16 @@ const ComponentGalleryRoute = () => {
     return (
         <Container>
             <Typography variant="h5"><code>&lt;ProgressRing/&gt;</code></Typography>
-            <Stack direction="column" spacing={2}>
+            <Stack direction="row" spacing={2}>
                 {[1,4,10].map(sw => 
-                    <Stack direction="row" spacing={2}>
-                        {Array(10).fill(undefined)
-                            .map((_,i,arr) => i*1/arr.length)
+                    <Stack direction="column" spacing={2} key={sw}>
+                        {Array(6).fill(undefined)
+                            .map((_,i,arr) => i/(arr.length-1))
                             .map(p => {
                                 const s = 80;
-                                return <div style={{position:'relative', height:s, width:s,border:`1px solid ${blue[500]}`}}>
+                                return <div
+                                    key={p}
+                                    style={{position:'relative', height:s, width:s,border:`1px solid ${blue[500]}`}}>
                                     <ProgressRing sideLength={s} progress={p} strokeWidth={sw}/>
                                 </div>;
                             })}
