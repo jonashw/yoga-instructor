@@ -45,7 +45,7 @@ const RoutinePlayRoute = () => {
             console.log('starting')
             play(routine.RoutinePoses);
         }
-    }, [routine,userHasInteracted]);
+    }, [routine]);
 
     if (!routine) {
         return <div>Loading...</div>;
@@ -57,6 +57,7 @@ const RoutinePlayRoute = () => {
                 ?
                     <>
                         <Button color="primary" variant="outlined" onClick={() => {
+                            play(routine.RoutinePoses);
                         }}>Start Routine</Button>
                     </>
                 : 
