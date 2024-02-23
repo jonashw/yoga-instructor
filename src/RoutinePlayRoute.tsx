@@ -19,32 +19,45 @@ const RoutinePlayRoute = () => {
 
     const play = (poses: RoutinePose[]) => {
         let p = currentPose;
-        const loop = () => {
+        let canPlay = true;
+        const loop = async () => {
+            if(!canPlay){ return; }
             let i = p ? poses.indexOf(p) + 1 : 0;
             console.log('loop', { i });
-            if (i < poses.length) {
-                setCurrentPose(p = poses[i]);
-                Announcer.announce(p.Pose.Name).then(() => {
-                    StartTimerProgression(p!.DurationInSeconds, state => {
-                        //console.log(state);
-                        setProgress(state.progressFactor);
-                    }).then(loop);
-                });
-            } else {
+            if (i >= poses.length) {
                 setCurrentPose(undefined);
+            } else {
+                setCurrentPose(p = poses[i]);
+                let announcement = await Announcer.announce(p.Pose.Name);
+                await announcement.started;
+                if(!canPlay){ return; }
+                await StartTimerProgression(p!.DurationInSeconds, state => {
+                    //console.log(state);
+                    setProgress(state.progressFactor);
+                }).finished;
+                loop();
             }
         };
         loop();
+        return () => {
+            canPlay = false;
+            console.log('player stopped');
+        };
     };
 
     React.useEffect(() => {
         if (!routine) {
             return;
         }
-        if(userHasInteracted){
-            console.log('starting')
-            play(routine.RoutinePoses);
+        if(!userHasInteracted){
+            return;
         }
+        console.log('starting');
+        const stop = play(routine.RoutinePoses);
+        return () => {
+            console.log('RoutinePlayRoute unmounted');
+            stop();
+        };
     }, [routine]);
 
     if (!routine) {
