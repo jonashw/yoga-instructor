@@ -5,7 +5,7 @@ import Announcer from "./Announcer";
 import { Button, Container, Stack, Typography } from "@mui/material";
 import { PoseDataContext } from "./PoseDataContext";
 import { useParams } from "react-router-dom";
-import { StartTimerProgression } from "./Timer";
+import { StartTimerProgression, TimerProgression } from "./Timer";
 import { ProgressRing } from "./ProgressRing";
 import { UserInteractedContext } from "./UserInteractedContext";
 
@@ -20,6 +20,7 @@ const RoutinePlayRoute = () => {
     const play = (poses: RoutinePose[]) => {
         let p = currentPose;
         let canPlay = true;
+        let timer: TimerProgression;
         const loop = async () => {
             if(!canPlay){ return; }
             let i = p ? poses.indexOf(p) + 1 : 0;
@@ -31,16 +32,20 @@ const RoutinePlayRoute = () => {
                 let announcement = await Announcer.announce(p.Pose.Name);
                 await announcement.started;
                 if(!canPlay){ return; }
-                await StartTimerProgression(p!.DurationInSeconds, state => {
+                timer = StartTimerProgression(p!.DurationInSeconds, state => {
                     //console.log(state);
                     setProgress(state.progressFactor);
-                }).finished;
+                });
+                await timer.finished;
                 loop();
             }
         };
         loop();
         return () => {
             canPlay = false;
+            if(timer){
+                timer.stop();
+            }
             console.log('player stopped');
         };
     };

@@ -2,7 +2,7 @@ type TimerState = {progressFactor: number};
 export const StartTimerProgression = (
     durationInSeconds: number,
     onProgress: (ts: TimerState) => void
-) => {
+): TimerProgression => {
     let interval: number;
     const finished = new Promise<void>(resolve => {
         const durationInMS = 1000 * durationInSeconds;
@@ -20,5 +20,18 @@ export const StartTimerProgression = (
             },
             progressIntervalInMS);
     });
-    return {finished};
+    const stop = () => {
+        if(!interval){
+            console.log('no timer interval set')
+            return;
+        }
+        console.log('timer interval cleared');
+        clearInterval(interval);
+    };
+    return {finished,stop};
+}
+
+export type TimerProgression = {
+    finished: Promise<void>,
+    stop: () => void
 }

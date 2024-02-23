@@ -12,8 +12,10 @@ const announce = async (msg: string) => {
     const started = new Promise<void>(resolve => {
         audio.onplay = () => resolve();
     });
+    audio.oncanplay = () => {
+        audio.play();
+    }
     audio.controls = true;
-    audio.autoplay = true;
     audio.src = window.URL.createObjectURL(b);
     return { ended, started };
 };
